@@ -77,6 +77,7 @@
             this.startWorkButton.TabIndex = 4;
             this.startWorkButton.Text = "Start Work";
             this.startWorkButton.UseVisualStyleBackColor = true;
+            this.startWorkButton.Click += new System.EventHandler(this.startWorkButton_Click);
             // 
             // startBreakButton
             // 
@@ -111,6 +112,7 @@
             this.Controls.Add(this.workTimeLabel);
             this.Name = "MainForm";
             this.Text = "MigraineAway";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
