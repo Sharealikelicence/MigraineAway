@@ -40,8 +40,39 @@ namespace MigraineAway
                 countdownTime = TimeSpan.Parse(workTimeTextBox.Text);
                 countdownTimer.Start();
             }
+            catch (OverflowException)
+            {
+                MessageBox.Show("One value in work time is too large or has incorrect number of digits");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Work time value is not in correct format (hh:mm:ss)");
+            }
             catch (Exception ex)
             {
+                var t = ex.GetType();
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+        }
+
+        private void startBreakButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                countdownTime = TimeSpan.Parse(breakTimeTextBox.Text);
+                countdownTimer.Start();
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("One value in break time is too large or has incorrect number of digits");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Break time value is not in correct format (hh:mm:ss)");
+            }
+            catch (Exception ex)
+            {
+                var t = ex.GetType();
                 MessageBox.Show("Exception: " + ex.Message);
             }
         }
@@ -56,10 +87,10 @@ namespace MigraineAway
             }
             else
             {
-                // FIXME: Change label text update to same thread
-                timerLabel.Text = countdownTime.ToString();
                 countdownTimer.Start();
             }
+
+            timerLabel.Invoke((MethodInvoker)(() => timerLabel.Text = countdownTime.ToString()));
         }
     }
 }
