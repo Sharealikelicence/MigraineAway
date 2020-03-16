@@ -40,6 +40,10 @@ namespace MigraineAway
                 AutoReset = false
             };
             countdownTimer.Elapsed += CountdownTimer_Elapsed;
+
+            // Add handlers to start corresponding timers on Enter button press
+            workTimeTextBox.KeyPress += new KeyPressEventHandler(CheckWorkTimeEnterKeyPress);
+            breakTimeTextBox.KeyPress += new KeyPressEventHandler(CheckBreakTimeEnterKeyPress);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -137,6 +141,18 @@ namespace MigraineAway
         {
             AboutBox about = new AboutBox();
             about.Show();
+        }
+
+        private void CheckWorkTimeEnterKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Return)
+                StartTimer(TimeName.WORK, workTimeTextBox.Text);
+        }
+
+        private void CheckBreakTimeEnterKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Return)
+                StartTimer(TimeName.BREAK, breakTimeTextBox.Text);
         }
     }
 }
