@@ -5,7 +5,7 @@ A simple timer app to help prevent migraines caused by eye strain from looking a
 - Instantly minimises when starting a work timer
 - Pops up in front of all running applications so that you don't forget to take a break
 ## Latest Release
-The precompiled executable can be found [here](https://github.com/Sharealikelicence/MigraineAway/tree/master/Release).
+The precompiled executable can be found [here](https://github.com/Sharealikelicence/MigraineAway/releases/tag/v1.0.0.0).
 ## Configuration
 The default work and break times can be configured within the `.config` file in the following format:
 ``` XML
